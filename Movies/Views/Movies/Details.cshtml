@@ -1,0 +1,63 @@
+﻿@model Movies.Data.Movie
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Movie</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ReleaseDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ReleaseDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Duration)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Duration)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Director)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Director)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Thumbnail)
+        </dt>
+        <dd>
+            <img style="width: 20%" src="data:image/jpeg;base64,@Convert.ToBase64String(Model.Thumbnail)" />
+        </dd>
+        @foreach (var cast in Model.CastMembers)
+        {
+            <dt>
+                @Html.DisplayNameFor(model => cast.ActorName)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => cast.ActorName)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => cast.CharacterName)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => cast.CharacterName)
+            </dd>
+        }
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.MovieId">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
